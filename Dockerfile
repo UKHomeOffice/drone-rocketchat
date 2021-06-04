@@ -8,4 +8,4 @@ RUN adduser -D -H 1000 && chown -R 1000:1000 /APP
 RUN chmod -R +x /APP/scripts/
 RUN chown -R 1000:1000 /APP/scripts
 USER ${USERMAP_UID}
-ENTRYPOINT run.sh
+ENTRYPOINT /APP/scripts/run.sh

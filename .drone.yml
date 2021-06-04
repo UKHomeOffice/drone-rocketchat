@@ -44,10 +44,10 @@ steps:
     icon: 
      - value: ":sos:"
        when:
-         DRONE_BUILD_STATUS: failure
+          DRONE_BUILD_STATUS: failure
      - value: ":white_check_mark:"
        when:
-         DRONE_BUILD_STATUS: success
+          DRONE_BUILD_STATUS: success
     title:
       - value: "${DRONE_BUILD_NUMBER} Successful"
         when:

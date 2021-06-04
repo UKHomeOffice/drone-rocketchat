@@ -7,12 +7,12 @@ platform:
   arch: amd64
 
 steps:
-- name: Sonar Security Scan
-  pull: if-not-exists
-  image: quay.io/ukhomeofficedigital/sonar-scanner:latest
-  when:
-    event:
-    - push
+# - name: Sonar Security Scan
+#   pull: if-not-exists
+#   image: quay.io/ukhomeofficedigital/sonar-scanner:latest
+#   when:
+#     event:
+#     - push
 
 - name: docker build and push to quay
   image: plugins/docker

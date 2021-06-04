@@ -1,10 +1,12 @@
 FROM quay.io/ukhomeofficedigital/python-alpine:3.7.6-alpine3.11
 RUN mkdir -p /APP/scripts/
+RUN apk -Uuv add curl ca-certificates
 ENV USERMAP_UID 1000
 WORKDIR /APP/scripts/
-RUN apk -Uuv add curl ca-certificates
-COPY scripts/ /APP/scripts/run.sh
+COPY scripts/ /APP/scripts/
 RUN adduser -D -H 1000 && chown -R 1000:1000 /APP
-RUN chmod -R +x /APP/scripts/
+RUN chmod -R +x /APP/scripts
 RUN chown -R 1000:1000 /APP/scripts
-ENTRYPOINT /APP/scripts/run.sh
+RUN chmod -R 777 /APP/scripts
+USER ${USERMAP_UID}
+RUN sh /APP/scripts/run.sh

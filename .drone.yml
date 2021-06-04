@@ -40,7 +40,7 @@ steps:
   when:
     status: [ success, failure ]
   settings:
-    username: Test
+    username: "Test"
     icon: 
      - value: ":sos:"
        when:
@@ -69,7 +69,7 @@ steps:
       - value: "#e30d0d"
         when:
           DRONE_BUILD_STATUS: failure
-    url: https://rocketchat.shs-dev.dsa-notprod.homeoffice.gov.uk/hooks/ePytNRCpvGinTaLPP/RW4nT4sLEvt4wxEhbYar4brxdKGdsFf8DoH4gd5AvGSKgjAz
+    webhook: https://rocketchat.shs-dev.dsa-notprod.homeoffice.gov.uk/hooks/ePytNRCpvGinTaLPP/RW4nT4sLEvt4wxEhbYar4brxdKGdsFf8DoH4gd5AvGSKgjAz
 
     
 

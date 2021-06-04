@@ -30,10 +30,50 @@ steps:
     DOCKER_PASSWORD:
       from_secret: docker_password
   when:
-    event:
-     - push
+      event:
+      - push
 #    branch:
 #     - master
+
+- name: rocketchat-webhook
+  image: quay.io/ukhomeofficedigital/drone-rocketchat
+  when:
+    status: [ success, failure ]
+  settings:
+    username: Test
+    icon: 
+     - value: ":sos:"
+       when:
+         DRONE_BUILD_STATUS: failure
+     - value: ":white_check_mark:"
+       when:
+         DRONE_BUILD_STATUS: success
+    title:
+      - value: "${DRONE_BUILD_NUMBER} Successful"
+        when:
+          DRONE_BUILD_STATUS: success
+      - value: "${DRONE_BUILD_NUMBER} Failed"
+        when:
+          DRONE_BUILD_STATUS: failure
+    text:
+      - value: "${DRONE_COMMIT_MESSAGE}"
+        when:
+          DRONE_BUILD_STATUS: success
+      - value: "${DRONE_COMMIT_MESSAGE}"
+        when:
+          DRONE_BUILD_STATUS: failure
+    color:
+      - value: "#2DE0A5"
+        when:
+          DRONE_BUILD_STATUS: success
+      - value: "#e30d0d"
+        when:
+          DRONE_BUILD_STATUS: failure
+    url: https://rocketchat.shs-dev.dsa-notprod.homeoffice.gov.uk/hooks/ePytNRCpvGinTaLPP/RW4nT4sLEvt4wxEhbYar4brxdKGdsFf8DoH4gd5AvGSKgjAz
+
+    
+
+
 
 services:
 - name: docker

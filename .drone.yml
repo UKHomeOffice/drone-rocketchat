@@ -5,10 +5,11 @@ type: kubernetes
 platform:
   os: linux
   arch: amd64
+
 steps:
 - name: Sonar Security Scan
   pull: if-not-exists
-  image: quay.io/ukhomeofficedigital/sonar-scanner:v3.0.3
+  image: quay.io/ukhomeofficedigital/sonar-scanner:latest
   when:
     event:
     - push

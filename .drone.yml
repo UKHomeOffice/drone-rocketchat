@@ -1,0 +1,39 @@
+---
+kind: pipeline
+name: default
+type: kubernetes
+platform:
+  os: linux
+  arch: amd64
+steps:
+- name: Sonar Security Scan
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/sonar-scanner:v3.0.3
+  when:
+    event:
+    - push
+
+- name: docker build and push to quay
+  image: plugins/docker
+  settings:
+    registry: quay.io
+    dockerfile: Dockerfile
+    repo: quay.io/ukhomeofficedigital/drone-rocketchat
+    tags:
+    - latest
+    - ${DRONE_COMMIT_SHA}
+    - build-${DRONE_BUILD_NUMBER}
+  environment:
+    DOCKER_USERNAME:
+      from_secret: docker_username
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+  when:
+    event:
+     - push
+#    branch:
+#     - master
+
+services:
+- name: docker
+  image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind

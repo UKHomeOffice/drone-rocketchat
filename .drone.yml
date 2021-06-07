@@ -77,7 +77,7 @@ steps:
     webhook: 
       from_secret: dev_webhook
     command:
-    - env
+    - sh scripts/run.sh
     
 services:
 - name: docker

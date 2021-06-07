@@ -9,4 +9,3 @@ RUN chmod -R +x /APP/scripts
 RUN chown -R 1000:1000 /APP/scripts
 RUN chmod -R 777 /APP/scripts
 USER ${USERMAP_UID}
-ENTRYPOINT /APP/scripts/run.sh

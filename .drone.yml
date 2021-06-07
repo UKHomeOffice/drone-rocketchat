@@ -38,9 +38,9 @@ steps:
     icon:
       - value: ":sos:"
     title:
-      - value: "Build Number ${DRONE_BUILD_NUMBER}"
+      - value: "Build Number"
     text:
-      - value: "Commit by ${DRONE_COMMIT_AUTHOR} : ${DRONE_COMMIT_MESSAGE}"
+      - value: "Commit by "
     color:
       - value: "#2DE0A5"
     webhook:

@@ -34,50 +34,81 @@ steps:
   when:
       event:
       - push
-      #branch:
-      #- master
+      branch:
+      - master
   
 
 
-- name: notification2
-  image: quay.io/ukhomeofficedigital/drone-rocketchat:latest
-  pull: if-not-exists
+# - name: notification2
+#   image: quay.io/ukhomeofficedigital/drone-rocketchat:latest
+#   pull: if-not-exists
+#   when:
+#     status: [ success, failure ]
+#   settings:
+#     username: "Test"
+#     icon: 
+#      - value: ":sos:"
+#        when:
+#           DRONE_BUILD_STATUS: failure
+#      - value: ":white_check_mark:"
+#        when:
+#           DRONE_BUILD_STATUS: success
+#     title:
+#       - value: "Build Number ${DRONE_BUILD_NUMBER} Successful"
+#         when:
+#           DRONE_BUILD_STATUS: success
+#       - value: "Build Number ${DRONE_BUILD_NUMBER} Failed"
+#         when:
+#           DRONE_BUILD_STATUS: failure
+#     text:
+#       - value: "Commit by ${DRONE_COMMIT_AUTHOR} : ${DRONE_COMMIT_MESSAGE}"
+#         when:
+#           DRONE_BUILD_STATUS: success
+#       - value: "Commit by ${DRONE_COMMIT_AUTHOR} : ${DRONE_COMMIT_MESSAGE}"
+#         when:
+#           DRONE_BUILD_STATUS: failure
+#     color:
+#       - value: "#2DE0A5"
+#         when:
+#           DRONE_BUILD_STATUS: success
+#       - value: "#e30d0d"
+#         when:
+#           DRONE_BUILD_STATUS: failure
+#     webhook: 
+#       from_secret: dev_webhook
+#     command:
+#     - sh scripts/run.sh
+
+- name: notification
+  image: quay.io/ukhomeofficedigital/drone-rocketchat:buil-4
   when:
-    status: [ success, failure ]
+      status: [ success, failure ]
   settings:
-    username: "Test"
-    icon: 
-     - value: ":sos:"
-       when:
-          DRONE_BUILD_STATUS: failure
-     - value: ":white_check_mark:"
-       when:
-          DRONE_BUILD_STATUS: success
-    title:
-      - value: "Build Number ${DRONE_BUILD_NUMBER} Successful"
-        when:
-          DRONE_BUILD_STATUS: success
-      - value: "Build Number ${DRONE_BUILD_NUMBER} Failed"
-        when:
-          DRONE_BUILD_STATUS: failure
-    text:
-      - value: "Commit by ${DRONE_COMMIT_AUTHOR} : ${DRONE_COMMIT_MESSAGE}"
-        when:
-          DRONE_BUILD_STATUS: success
-      - value: "Commit by ${DRONE_COMMIT_AUTHOR} : ${DRONE_COMMIT_MESSAGE}"
-        when:
-          DRONE_BUILD_STATUS: failure
-    color:
-      - value: "#2DE0A5"
-        when:
-          DRONE_BUILD_STATUS: success
-      - value: "#e30d0d"
-        when:
-          DRONE_BUILD_STATUS: failure
-    webhook: 
+    webhook:
       from_secret: dev_webhook
-    command:
-    - sh scripts/run.sh
+    username: DroneCI
+    color: 
+      - value: green
+        when:
+          DRONE_BUILD_STATUS: success
+      - value: red
+        when:
+          DRONE_BUILD_STATUS: failure          
+    message:
+      - value: "Build: ${DRONE_BUILD_NUMBER} succeeded. Good job."
+        when:
+          DRONE_BUILD_STATUS: success
+      - value: "Build: ${DRONE_BUILD_NUMBER} failed. Fix me please."      
+    text: ${DRONE_COMMIT_MESSAGE}
+    fields:
+      - title: Author
+        value: ${DRONE_COMMIT_AUTHOR}
+      - title: Demo
+        value: This field will only be visible if the current branch: ${DRONE_COMMIT_BRANCH} is master or production
+        when:
+          DRONE_COMMIT_BRANCH:
+            - master
+            - development
     
 services:
 - name: docker

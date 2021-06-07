@@ -31,7 +31,7 @@ steps:
       branch:
       - master
 
-      
+
 - name: notification2
   image: quay.io/ukhomeofficedigital/drone-rocketchat:latest-testing
   pull: if-not-exists
@@ -42,7 +42,7 @@ steps:
     text:
       - value: "Commit by ${DRONE_COMMIT_AUTHOR} : ${DRONE_COMMIT_MESSAGE}"
     webhook:
-      from_secret: als-test-webhook
+      from_secret: als_test_webhook
     command:
     - sh scripts/run.sh
   when:

@@ -4,7 +4,7 @@
 generate_data() {
   cat <<EOF 
  {
-    "icon": ${PLUGIN_ICON},
+    "icon_emoji": ${PLUGIN_ICON},
     "username": ${PLUGIN_USERNAME},
     "attachments": [ {
     "title": ${PLUGIN_TITLE},
@@ -14,6 +14,7 @@ generate_data() {
  }
 EOF
 }
+
 output=$(generate_data)
 echo $(output)
 echo "Invoking webhook"

@@ -50,17 +50,17 @@ steps:
        when:
           DRONE_BUILD_STATUS: success
     title:
-      - value: "${DRONE_BUILD_NUMBER} Successful"
+      - value: "Build Number ${DRONE_BUILD_NUMBER} for ${DRONE_REPO_NAME} Successful"
         when:
           DRONE_BUILD_STATUS: success
-      - value: "${DRONE_BUILD_NUMBER} Failed"
+      - value: "Build Number ${DRONE_BUILD_NUMBER} for ${DRONE_REPO_NAME} Failed"
         when:
           DRONE_BUILD_STATUS: failure
     text:
-      - value: "${DRONE_COMMIT_MESSAGE}"
+      - value: "Commit by ${DRONE_COMMIT_AUTHOR} : ${DRONE_COMMIT_MESSAGE}"
         when:
           DRONE_BUILD_STATUS: success
-      - value: "${DRONE_COMMIT_MESSAGE}"
+      - value: "Commit by ${DRONE_COMMIT_AUTHOR} : ${DRONE_COMMIT_MESSAGE}"
         when:
           DRONE_BUILD_STATUS: failure
     color:

@@ -15,7 +15,7 @@ steps:
     dockerfile: Dockerfile
     repo: quay.io/ukhomeofficedigital/drone-rocketchat
     tags:
-    - latest-testing
+    - latest
     - ${DRONE_COMMIT_SHA}
     - build-${DRONE_BUILD_NUMBER}
     command:
@@ -31,7 +31,7 @@ steps:
 
 
 - name: notification2
-  image: quay.io/ukhomeofficedigital/drone-rocketchat:latest-testing
+  image: quay.io/ukhomeofficedigital/drone-rocketchat:latest
   pull: if-not-exists
   settings:
     username: "Test"

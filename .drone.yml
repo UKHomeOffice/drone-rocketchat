@@ -7,21 +7,15 @@ platform:
   arch: amd64
 
 steps:
-# - name: Sonar Security Scan
-#   pull: if-not-exists
-#   image: quay.io/ukhomeofficedigital/sonar-scanner:latest
-#   when:
-#     event:
-#     - push
 
 - name: docker build and push to quay
   image: plugins/docker
   settings:
     registry: quay.io
     dockerfile: Dockerfile
-    repo: quay.io/ukhomeofficedigital/drone-rockdghfetchat
+    repo: quay.io/ukhomeofficedigital/drone-rocketchat
     tags:
-    - latest
+    - latest-testing
     - ${DRONE_COMMIT_SHA}
     - build-${DRONE_BUILD_NUMBER}
     command:
@@ -36,49 +30,25 @@ steps:
       - push
       #branch:
       #- master
-  
+
 
 
 - name: notification2
-  image: quay.io/ukhomeofficedigital/drone-rocketchat:latest
+  image: quay.io/ukhomeofficedigital/drone-rocketchat:latest-testing
   pull: if-not-exists
-  when:
-    status: [ success, failure ]
   settings:
     username: "Test"
-    icon: 
-     - value: ":sos:"
-       when:
-          DRONE_BUILD_STATUS: failure
-     - value: ":white_check_mark:"
-       when:
-          DRONE_BUILD_STATUS: success
     title:
-      - value: "Build Number ${DRONE_BUILD_NUMBER} Successful"
-        when:
-          DRONE_BUILD_STATUS: success
-      - value: "Build Number ${DRONE_BUILD_NUMBER} Failed"
-        when:
-          DRONE_BUILD_STATUS: failure
+      - value: "Build Number ${DRONE_BUILD_NUMBER} ${DRONE_BUILD_STATUS}"
     text:
       - value: "Commit by ${DRONE_COMMIT_AUTHOR} : ${DRONE_COMMIT_MESSAGE}"
-        when:
-          DRONE_BUILD_STATUS: success
-      - value: "Commit by ${DRONE_COMMIT_AUTHOR} : ${DRONE_COMMIT_MESSAGE}"
-        when:
-          DRONE_BUILD_STATUS: failure
-    color:
-      - value: "#2DE0A5"
-        when:
-          DRONE_BUILD_STATUS: success
-      - value: "#e30d0d"
-        when:
-          DRONE_BUILD_STATUS: failure
-    webhook: 
-      from_secret: dev_webhook
+    webhook:
+      from_secret: als-test-webhook
     command:
     - sh scripts/run.sh
-    
+    when:
+      status: [ success, failure ]
+
 services:
 - name: docker
   image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind

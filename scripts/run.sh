@@ -1,7 +1,7 @@
 #!/bin/sh
-
+set -x
 generate_data() {
-  cat <<EOF 
+  cat <<EOF
  {
     "icon_emoji": "${PLUGIN_ICON}",
     "username": "${PLUGIN_USERNAME}",

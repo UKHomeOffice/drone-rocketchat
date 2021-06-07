@@ -24,6 +24,8 @@ steps:
     - latest
     - ${DRONE_COMMIT_SHA}
     - build-${DRONE_BUILD_NUMBER}
+    command:
+    - env
   environment:
     DOCKER_USERNAME:
       from_secret: docker_username
@@ -34,7 +36,8 @@ steps:
       - push
       #branch:
       #- master
-      
+  
+
 
 - name: rocketchat-webhook
   image: quay.io/ukhomeofficedigital/drone-rocketchat:latest
@@ -73,6 +76,8 @@ steps:
           DRONE_BUILD_STATUS: failure
     webhook: 
       from_secret: dev_webhook
+    command:
+    - env
     
 
 

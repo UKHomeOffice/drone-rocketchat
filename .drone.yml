@@ -37,10 +37,14 @@ steps:
   pull: if-not-exists
   settings:
     username: "Test"
+    icon:
+      - value: ":sos:"
     title:
       - value: "Build Number ${DRONE_BUILD_NUMBER} ${DRONE_BUILD_STATUS}"
     text:
       - value: "Commit by ${DRONE_COMMIT_AUTHOR} : ${DRONE_COMMIT_MESSAGE}"
+    color:
+      - value: "#2DE0A5"
     webhook:
       from_secret: als_test_webhook
     command:

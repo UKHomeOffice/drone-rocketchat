@@ -70,10 +70,10 @@ steps:
       - value: "#e30d0d"
         when:
           DRONE_BUILD_STATUS: failure
-    webhook: https://rocketchat.shs-dev.dsa-notprod.homeoffice.gov.uk/hooks/ePytNRCpvGinTaLPP/RW4nT4sLEvt4wxEhbYar4brxdKGdsFf8DoH4gd5AvGSKgjAz
- # commands:
- # - sh scripts/run.sh
-
+    webhook: 
+      from_secret: dev_webhook
+    command:
+      - sh scripts/run.sh
     
 
 

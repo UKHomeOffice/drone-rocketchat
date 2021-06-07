@@ -3,7 +3,7 @@
 generate_data() {
   cat <<EOF 
  {
-    "icon_emoji": "${PLUGIN_ICON}",
+    "icon_emoji": ":${PLUGIN_ICON}:",
     "username": "${PLUGIN_USERNAME}",
     "attachments": [ {
     "title": "${PLUGIN_TITLE}",

@@ -39,7 +39,7 @@ steps:
   
 
 
-- name: rocketchat-webhook
+- name: notification
   image: quay.io/ukhomeofficedigital/drone-rocketchat:latest
   pull: if-not-exists
   when:

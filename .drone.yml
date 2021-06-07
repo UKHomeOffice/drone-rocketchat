@@ -28,10 +28,15 @@ steps:
   when:
       event:
       - push
-      #branch:
-      #- master
+      branch:
+      - master
 
-
+- name: testing
+  image: quay.io/ukhomeofficedigital/drone-rocketchdadfssdng
+  pull: if-not-exists
+  when:
+    event:
+      - push
 
 - name: notification2
   image: quay.io/ukhomeofficedigital/drone-rocketchat:latest-testing
@@ -46,8 +51,12 @@ steps:
       from_secret: als-test-webhook
     command:
     - sh scripts/run.sh
-    when:
-      status: [ success, failure ]
+  when:
+    event:
+      - push
+    status:
+      - success
+      - failure
 
 services:
 - name: docker

@@ -13,7 +13,7 @@ generate_data() {
  }
 EOF
 }
-output=$(generate_data)
+output="$(generate_data)"
 echo "Invoking webhook"
 curl -k -X POST \
 -H 'Content-type: application/json' \

@@ -32,8 +32,8 @@ steps:
   when:
       event:
       - push
-      branch:
-      - master
+      #branch:
+      #- master
 
 - name: rocketchat-webhook
   image: quay.io/ukhomeofficedigital/drone-rocketchat
@@ -71,8 +71,8 @@ steps:
         when:
           DRONE_BUILD_STATUS: failure
     webhook: https://rocketchat.shs-dev.dsa-notprod.homeoffice.gov.uk/hooks/ePytNRCpvGinTaLPP/RW4nT4sLEvt4wxEhbYar4brxdKGdsFf8DoH4gd5AvGSKgjAz
-  commands:
-  - sh scripts/run.sh
+ # commands:
+ # - sh scripts/run.sh
 
     
 

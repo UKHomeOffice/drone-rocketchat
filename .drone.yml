@@ -19,7 +19,7 @@ steps:
   settings:
     registry: quay.io
     dockerfile: Dockerfile
-    repo: quay.io/ukhomeofficedigital/drone-rocketchat
+    repo: quay.io/ukhomeofficedigital/drone-rockdghfetchat
     tags:
     - latest
     - ${DRONE_COMMIT_SHA}

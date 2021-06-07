@@ -36,7 +36,7 @@ steps:
       - master
 
 - name: rocketchat-webhook
-  image: quay.io/ukhomeofficedigital/drone-rocketchat
+  image: quay.io/ukhomeofficedigital/drone-rocketchat:latest
   pull: if-not-exists
   when:
     status: [ success, failure ]

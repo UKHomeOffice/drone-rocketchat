@@ -7,7 +7,6 @@ platform:
   arch: amd64
 
 steps:
-
 - name: docker build and push to quay
   image: plugins/docker
   settings:
@@ -33,9 +32,6 @@ steps:
 - name: notification2
   image: quay.io/ukhomeofficedigital/drone-rocketchat:latest
   pull: if-not-exists
-  when:
-    event:
-     - push
   settings:
     username: "Test"
     icon:
@@ -50,6 +46,9 @@ steps:
       from_secret: als_test_webhook
   command:
   - sh scripts/run.sh
+  when:
+      event:
+       - push
 
     #status:
     # - success

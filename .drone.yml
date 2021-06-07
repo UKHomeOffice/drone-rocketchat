@@ -50,7 +50,6 @@ steps:
       from_secret: als_test_webhook
     command:
     - sh scripts/run.sh
-    - env
 
     #status:
     # - success

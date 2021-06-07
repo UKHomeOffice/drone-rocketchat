@@ -48,8 +48,8 @@ steps:
       - value: "#2DE0A5"
     webhook:
       from_secret: als_test_webhook
-    command:
-    - sh scripts/run.sh
+  command:
+  - sh scripts/run.sh
 
     #status:
     # - success

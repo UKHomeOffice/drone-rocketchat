@@ -40,7 +40,7 @@ steps:
     icon:
       - value: ":sos:"
     title:
-      - value: "Build Number ${DRONE_BUILD_NUMBER} ${DRONE_BUILD_STATUS}"
+      - value: "Build Number ${DRONE_BUILD_NUMBER}"
     text:
       - value: "Commit by ${DRONE_COMMIT_AUTHOR} : ${DRONE_COMMIT_MESSAGE}"
     color:
@@ -51,10 +51,10 @@ steps:
     - sh scripts/run.sh
   when:
     event:
-      - push
-    status:
-      - success
-      - failure
+     - push
+    #status:
+    # - success
+    # - failure
 
 services:
 - name: docker

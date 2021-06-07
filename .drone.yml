@@ -47,10 +47,10 @@ steps:
   settings:
     username: "Test"
     icon: 
-     - value: "sos"
+     - value: ":sos:"
        when:
           DRONE_BUILD_STATUS: failure
-     - value: "white_check_mark"
+     - value: ":white_check_mark:"
        when:
           DRONE_BUILD_STATUS: success
     title:

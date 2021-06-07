@@ -14,9 +14,9 @@ generate_data() {
 EOF
 }
 data=$(generate_data)
-echo $data
+echo $data >&2
 
-echo "Invoking webhook"
+echo "Invoking webhook" >&2
 
 curl -k -X POST \
 -H 'Content-type: application/json' \

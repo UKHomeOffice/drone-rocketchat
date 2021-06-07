@@ -36,7 +36,7 @@ steps:
   when:
     event:
      - push
-  settings:
+  environment:
     username: "Test"
     icon:
       - value: ":sos:"
@@ -50,6 +50,7 @@ steps:
       from_secret: als_test_webhook
     command:
     - sh scripts/run.sh
+    - env
 
     #status:
     # - success

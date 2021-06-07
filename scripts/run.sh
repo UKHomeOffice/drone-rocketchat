@@ -14,6 +14,7 @@ generate_data() {
  }
 EOF
 }
+
 data="$(generate_data)"
 echo "Invoking webhook"
 curl -k -X POST \

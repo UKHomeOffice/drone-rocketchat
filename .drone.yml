@@ -100,15 +100,6 @@ steps:
           DRONE_BUILD_STATUS: success
       - value: "Build: ${DRONE_BUILD_NUMBER} failed. Fix me please."      
     text: ${DRONE_COMMIT_MESSAGE}
-    fields:
-      - title: Author
-        value: ${DRONE_COMMIT_AUTHOR}
-      - title: Demo
-        value: This field will only be visible if the current branch: ${DRONE_COMMIT_BRANCH} is master or production
-        when:
-          DRONE_COMMIT_BRANCH:
-            - master
-            - development
     
 services:
 - name: docker

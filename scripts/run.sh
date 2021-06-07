@@ -1,5 +1,6 @@
 #!/bin/sh
 
+
 generate_data() {
   cat <<EOF 
  {
@@ -14,7 +15,7 @@ generate_data() {
 EOF
 }
 output=$(generate_data)
-
+echo $(output)
 echo "Invoking webhook"
 curl -k -X POST \
 -H 'Content-type: application/json' \

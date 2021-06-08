@@ -44,13 +44,14 @@ steps:
     webhook:
       from_secret: dev_webhook
   command:
-  - printenv
-  - echo DRONE_BUILD_STATUS:$DRONE_BUILD_STATUS
-  - echo DRONE_STAGE_STATUS:$DRONE_STAGE_STATUS
-  - echo DRONE_JOB_STATUS:$DRONE_JOB_STATUS
-  - echo CI_BUILD_STATUS:$CI_BUILD_STATUS
-  - echo CI_JOB_STATUS:$CI_JOB_STATUS
-  - echo BUILD_STATUS:$BUILD_STATUS
+    - printenv
+    - echo "DRONE_BUILD_STATUS:$DRONE_BUILD_STATUS"
+    - echo "DRONE_STAGE_STATUS:$DRONE_STAGE_STATUS"
+    - echo "DRONE_JOB_STATUS:$DRONE_JOB_STATUS"
+    - echo "CI_BUILD_STATUS:$CI_BUILD_STATUS"
+    - echo "CI_JOB_STATUS:$CI_JOB_STATUS"
+    - echo "BUILD_STATUS:$BUILD_STATUS"
+    - sh scripts/run.sh
   when:
     event:
     - push

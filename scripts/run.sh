@@ -1,5 +1,14 @@
 #!/bin/sh
 set -x
+
+env
+echo "DRONE_BUILD_STATUS:${DRONE_BUILD_STATUS}" >&2
+echo "DRONE_STAGE_STATUS:${DRONE_STAGE_STATUS}" >&2
+echo "DRONE_JOB_STATUS:${DRONE_JOB_STATUS}" >&2
+echo "CI_BUILD_STATUS:${CI_BUILD_STATUS}" >&2
+echo "CI_JOB_STATUS:${CI_JOB_STATUS}" >&2
+echo "BUILD_STATUS: ${BUILD_STATUS}" >&2
+
 generate_data() {
   cat <<EOF
  {

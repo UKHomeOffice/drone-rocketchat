@@ -43,7 +43,7 @@ steps:
     title:
       - value: "Build Number #${DRONE_BUILD_NUMBER} : ${DRONE_BUILD_STATUS}"
     text:
-      - value: "Commit by ${DRONE_COMMIT_AUTHOR} : ${DRONE_COMMIT_MESSAGE} "
+      - value: "Branch ${DRONE_BRANCH} : Commit by ${DRONE_COMMIT_AUTHOR_NAME} : ${DRONE_COMMIT_MESSAGE} "
     color:
       - value: "#E02D2D"
     webhook:

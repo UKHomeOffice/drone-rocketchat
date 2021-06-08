@@ -81,8 +81,8 @@ steps:
           DRONE_BUILD_STATUS: failure
     webhook: 
       from_secret: dev_webhook
-    command:
-      - sh scripts/run.sh
+    #command:
+    #  - sh scripts/run.sh
     
 
 

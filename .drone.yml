@@ -43,7 +43,7 @@ steps:
     color:
       - value: "#2DE0A5"
     webhook:
-      from_secret: als_test_webhook
+      from_secret: dev_webhook
   command:
   - sh scripts/run.sh
   when:

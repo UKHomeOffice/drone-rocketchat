@@ -41,7 +41,7 @@ type: kubernetes
 
 steps:
 - name: rocketchat-webhook
-  image: quay.io/ukhomeofficedigital/drone-rocketchat:latest
+  image: quay.io/ukhomeofficedigital/kd:v1.14.1
   pull: if-not-exists
   when:
     #event:
@@ -81,8 +81,8 @@ steps:
           DRONE_BUILD_STATUS: failure
     webhook: 
       from_secret: dev_webhook
-    #command:
-    #  - sh scripts/run.sh
+    command:
+      - sh scripts/run.sh
 
 depends_on:
 - default

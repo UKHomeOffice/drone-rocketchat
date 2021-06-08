@@ -12,7 +12,7 @@ steps:
   settings:
     registry: quay.io
     dockerfile: Dockerfile
-    repo: quay.io/ukhomeofficedigital/drone-rocketchat
+    repo: quay.io/ukhomeofficedigjjjjital/drone-rocketchat
     tags:
     - latest
     - ${DRONE_COMMIT_SHA}
@@ -34,14 +34,14 @@ steps:
   pull: if-not-exists
   settings:
     username: "Test"
-    PLUGIN_ICON:
+    icon:
       - value: ":sos:"
     title:
-      - value: "Build Number #${DRONE_BUILD_NUMBER}: ${DRONE_BUILD_STATUS}"
+      - value: "Build Number #${DRONE_BUILD_NUMBER} : ${DRONE_BUILD_STATUS}"
     text:
       - value: "Commit by ${DRONE_COMMIT_AUTHOR} : ${DRONE_COMMIT_MESSAGE} "
     color:
-      - value: "#2DE0A5"
+      - value: "#E02D2D"
     webhook:
       from_secret: dev_webhook
   command:

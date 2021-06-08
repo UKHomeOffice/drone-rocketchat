@@ -12,7 +12,7 @@ steps:
   settings:
     registry: quay.io
     dockerfile: Dockerfile
-    repo: quay.io/ukhomeofficedigjjjjital/drone-rocketchat
+    repo: quay.io/ukhomeofficedigital/drone-rocketchat
     tags:
     - latest
     - ${DRONE_COMMIT_SHA}
@@ -23,14 +23,10 @@ steps:
     DOCKER_USERNAME:
       from_secret: docker_username
     DOCKER_PASSWORD:
-      from_secret: docker_password
+      from_secret: docker_passwordd
   when:
       event:
       - push
-
----
-kind: pipeline
-name: after
 
 steps:
 - name: notification2
@@ -51,9 +47,13 @@ steps:
   command:
   - sh scripts/run.sh
   when:
-      status:
-        - success
-        - failure
+    event:
+    - push
+    - tag
+    status:
+    - success
+    - failure
+
 
 services:
 - name: docker

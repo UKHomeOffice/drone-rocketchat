@@ -28,7 +28,7 @@ steps:
       event:
       - push
 
-      
+
 - name: notification2
   image: quay.io/ukhomeofficedigital/drone-rocketchat:latest
   pull: if-not-exists
@@ -37,7 +37,7 @@ steps:
     icon:
       - value: ":sos:"
     title:
-      - value: "Build Number #${DRONE_BUILD_NUMBER} : ${DRONE_BUILD_STATUS}"
+      - value: "Build Number #${DRONE_BUILD_NUMBER} : ${DRONE_STAGE_STATUS}"
     text:
       - value: "Commit by ${DRONE_COMMIT_AUTHOR} : ${DRONE_COMMIT_MESSAGE} "
     color:

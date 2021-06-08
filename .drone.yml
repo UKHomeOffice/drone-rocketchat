@@ -50,9 +50,9 @@ steps:
     event:
     - push
     - tag
-    status:
-    - success
-    - failure
+    #status:
+    #- success
+    #- failure
 
 
 services:

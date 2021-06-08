@@ -28,7 +28,11 @@ steps:
       event:
       - push
 
+---
+kind: pipeline
+name: after
 
+steps:
 - name: notification2
   image: quay.io/ukhomeofficedigital/drone-rocketchat:latest
   pull: if-not-exists
@@ -47,12 +51,9 @@ steps:
   command:
   - sh scripts/run.sh
   when:
-      event:
-       - push
-
-    #status:
-    # - success
-    # - failure
+      status:
+        - success
+        - failure
 
 services:
 - name: docker

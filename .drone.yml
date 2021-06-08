@@ -83,7 +83,14 @@ steps:
       from_secret: dev_webhook
     #command:
     #  - sh scripts/run.sh
-    
+
+depends_on:
+- default
+
+trigger:
+  status:
+  - success
+  - failure
 
 
 

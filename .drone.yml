@@ -18,7 +18,7 @@ steps:
   image: plugins/docker
   settings:
     registry: quay.io
-    dockerfile: Dockerfile
+    dockerfile: Dockerfileg
     repo: quay.io/ukhomeofficedigital/drone-jghfsjrocketchat
     tags:
     - latest
@@ -69,7 +69,7 @@ steps:
       - value: "Commit by ${DRONE_COMMIT_AUTHOR} : ${DRONE_COMMIT_MESSAGE}"
         when:
           DRONE_BUILD_STATUS: success
-      - value: "Commit by {{build.Author}} : ${DRONE_COMMIT_MESSAGE}"
+      - value: "Commit by ${DRONE_COMMIT_AUTHOR} : ${DRONE_COMMIT_MESSAGE}"
         when:
           DRONE_BUILD_STATUS: failure
     color:

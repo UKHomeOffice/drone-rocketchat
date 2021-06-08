@@ -62,18 +62,7 @@ steps:
       from_secret: rocket_token
     channel:
       from_secret: rocket_channel
-    message: >
-      {{#success build.status}}✅{{else}}❌{{/success}} Build {{build.status}}: *{{repo.fullname}}*
-
-      build: {{build.number}}
-
-      commit: {{build.branch}}:{{build.commit}}
-
-      By: {{build.author}}
-
-      {{build.message}}
-
-      {{build.link}}
+    message: "test"
 
 depends_on:
 - default

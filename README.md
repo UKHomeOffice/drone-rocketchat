@@ -2,11 +2,11 @@
 
 This is a drone plugin that allows you to notify to Rocketchat from your drone build.
 
-## Usage
+### Usage
 
 You will need a rocketchat webhook for this plugin to work. Please set it as a drone secret.
 
-### Example .drone.yml
+#### Example .drone.yml
 
 ```yaml
 ---
@@ -65,7 +65,7 @@ services:
   image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
 ```
 
-### Example Output
+#### Example Output
 
 ```
 UKHomeOffice/drone-rocketchat @rocket.cat Bot 12:35 PM
@@ -76,6 +76,6 @@ Commit Message: added drone file
 https://drone-gh.acp.homeoffice.gov.uk/UKHomeOffice/drone-rocketchat/132
 ```
 
-## Environment Reference
+### Environment Reference
 
 [https://docs.drone.io/reference/environ/](https://docs.drone.io/reference/environ/)

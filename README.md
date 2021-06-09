@@ -11,7 +11,7 @@ You will need a rocketchat webhook for this plugin to work. Please set it as a d
 ```yaml
 ---
 kind: pipeline
-name: default
+name: example-pipeline
 type: kubernetes
 platform:
   os: linux
@@ -19,12 +19,12 @@ platform:
 
 steps:
 
-- name: docker build and push to quay
+- name: Step-1
   image: plugins/docker
   settings:
     registry: quay.io
     dockerfile: Dockerfile
-    repo: quay.io/ukhomeofficedigital/drone-rocketchat
+    repo: <repo>
     tags:
     - latest
     - ${DRONE_COMMIT_SHA}
@@ -41,7 +41,7 @@ steps:
       - master
 ---
 kind: pipeline
-name: after
+name: notify
 type: kubernetes
 
 steps:
